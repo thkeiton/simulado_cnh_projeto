@@ -6,7 +6,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-with open("questoes_transito.json", encoding="utf-8") as f:
+BASE_DIR = os.path.dirname(__file__)
+with open(os.path.join(BASE_DIR, "questoes_transito.json"), encoding="utf-8") as f:
     BANCO = json.load(f)
 
 def montar(q):
@@ -30,6 +31,10 @@ def gerar():
 
 import os
 
+# obrigatório para Render reconhecer a aplicação
+application = app
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
