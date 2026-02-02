@@ -1,6 +1,6 @@
 
 from flask import Flask, jsonify, request
-import json, random
+import json, random, os
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -29,7 +29,6 @@ def gerar():
     sorteadas = random.sample(BANCO, min(qtd, len(BANCO)))
     return jsonify([montar(q) for q in sorteadas])
 
-import os
 
 # obrigatório para Render reconhecer a aplicação
 application = app
